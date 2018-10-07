@@ -1,7 +1,6 @@
 package com.google.firebase.codelab.image_labeling
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,12 +17,12 @@ class ImageLabelAdapter(private var firebaseVisionList: List<Any>) : RecyclerVie
 
         fun bindCloud(currentItem: FirebaseVisionCloudLabel) {
             itemView.itemName.text = currentItem.label
-            //itemView.itemAccuracy.text = "Probability : ${(currentItem.confidence * 100).toInt()}%"
+            itemView.itemAccuracy.text = "Probability : ${(currentItem.confidence * 100).toInt()}%"
         }
 
         fun bindDevice(currentItem: FirebaseVisionLabel) {
             itemView.itemName.text = currentItem.label
-            //itemView.itemAccuracy.text = "Probability : ${(currentItem.confidence * 100).toInt()}%"
+            itemView.itemAccuracy.text = "Probability : ${(currentItem.confidence * 100).toInt()}%"
         }
 
     }
@@ -35,7 +34,6 @@ class ImageLabelAdapter(private var firebaseVisionList: List<Any>) : RecyclerVie
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         val currentItem = firebaseVisionList[position]
-        Log.d("ImageLabelAdapter", currentItem.toString())
         if (currentItem is FirebaseVisionCloudLabel)
             holder.bindCloud(currentItem)
         else

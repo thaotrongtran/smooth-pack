@@ -24,7 +24,7 @@
             tools:text="Item #1" />
 
         <TextView
-            android:id="@+id/itemDescription"
+            android:id="@+id/itemAccuracy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="8dp"
