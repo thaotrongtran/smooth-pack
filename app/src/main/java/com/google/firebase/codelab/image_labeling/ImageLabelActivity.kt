@@ -30,10 +30,10 @@ class ImageLabelActivity : BaseCameraActivity() {
     var carryOn = 0
     var checked = 0
 
-    var checkedLabels: Array<String> = arrayOf("can", "soda can", "mobile phone", "water")
+    var checkedLabels: Array<String> = arrayOf("can", "soda can", "mobile phone", "water", "laptop", "cell phone", "aluminum can", "soda can","water","bottle","book", "backpack","shirt","hat","watch", "technology", "water bottle", "weapon", "knife", "scissor", "extension cord")
     var checkedLuggage: HashSet<String> = checkedLabels.toHashSet()
 
-    var carryLabels: Array<String> = arrayOf("can", "soda can", "mobile phone", "baked goods")
+    var carryLabels: Array<String> = arrayOf("can", "soda can", "mobile phone", "baked goods", "dish", "laptop", "cell phone", "fruit", "chips", "chip", "backpack", "book", "shirt", "hat", "watch", "technology", "headphone", "wallet", "tablet", "pen", "paper", "hand", "leg")
     var carryLuggage: HashSet<String> = carryLabels.toHashSet()
 
 
