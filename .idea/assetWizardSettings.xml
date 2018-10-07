@@ -18,12 +18,24 @@
                                 <PersistentState>
                                   <option name="children">
                                     <map>
+                                      <entry key="backgroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="scalingPercent" value="94" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                       <entry key="foregroundImage">
                                         <value>
                                           <PersistentState>
                                             <option name="values">
                                               <map>
                                                 <entry key="scalingPercent" value="76" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -34,14 +46,50 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundLayerName" value="ic_XMark_launcher_background" />
-                                      <entry key="foregroundImage" value="C:\Users\Faugh\Desktop\PhotosForHackNC\x.png" />
-                                      <entry key="foregroundLayerName" value="ic_XMark_foreground" />
-                                      <entry key="outputName" value="XMark" />
+                                      <entry key="foregroundImage" value="C:\Users\Faugh\Desktop\PhotosForHackNC\CarryOn.png" />
+                                      <entry key="foregroundLayerName" value="ic_carryonpic" />
+                                      <entry key="legacyIconShape" value="NONE" />
+                                      <entry key="outputName" value="carryonpic" />
+                                      <entry key="webIconShape" value="NONE" />
                                     </map>
                                   </option>
                                 </PersistentState>
                               </value>
                             </entry>
+                            <entry key="launcherLegacy">
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="image">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="paddingPercent" value="5" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="iconShape" value="NONE" />
+                                      <entry key="imageAsset" value="C:\Users\Faugh\Desktop\PhotosForHackNC\suitcase-clipart-4.png" />
+                                      <entry key="outputName" value="ic_checkedlug" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputIconType" value="LAUNCHER_LEGACY" />
                           </map>
                         </option>
                       </PersistentState>

@@ -1,5 +1,6 @@
 package com.google.firebase.codelab.image_labeling
 
+
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
@@ -9,23 +10,39 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import android.widget.ImageView
+import android.widget.TextView
+import com.google.firebase.ml.vision.label.FirebaseVisionLabel
+import com.google.firebase.ml.vision.cloud.label.FirebaseVisionCloudLabel
+import org.w3c.dom.Text
 
 
 class ImageLabelActivity : BaseCameraActivity() {
-    lateinit var checkmark: ImageView
-    lateinit var xmark : ImageView
+    lateinit var Checkmark: ImageView
+    lateinit var ClearButton: ImageView
+
     private val itemAdapter: ImageLabelAdapter by lazy {
         ImageLabelAdapter(listOf())
     }
+
+    val listLabel: MutableList<FirebaseVisionCloudLabel> = ArrayList()
+    var carryOn = 0
+    var checked = 0
+
+    var checkedLabels: Array<String> = arrayOf("can", "soda can", "mobile phone", "water", "laptop", "cell phone", "aluminum can", "soda can","water","bottle","book", "backpack","shirt","hat","watch", "technology", "water bottle", "weapon", "knife", "scissor", "extension cord")
+    var checkedLuggage: HashSet<String> = checkedLabels.toHashSet()
+
+    var carryLabels: Array<String> = arrayOf("can", "soda can", "mobile phone", "baked goods", "dish", "laptop", "cell phone", "fruit", "chips", "chip", "backpack", "book", "shirt", "hat", "watch", "technology", "headphone", "wallet", "tablet", "pen", "paper", "hand", "leg")
+    var carryLuggage: HashSet<String> = carryLabels.toHashSet()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         rvLabel.layoutManager = LinearLayoutManager(this)
         rvLabel.adapter = itemAdapter
-
-        checkmark = findViewById(R.id.Checkmark)
-        xmark = findViewById(R.id.xmark)
+        Checkmark = findViewById(R.id.Checkmark)
+        ClearButton = findViewById(R.id.ClearButton)
     }
 
     private fun runImageLabeling(bitmap: Bitmap) {
@@ -40,7 +57,21 @@ class ImageLabelActivity : BaseCameraActivity() {
                 .addOnSuccessListener {
                     // Task completed successfully
                     progressBar.visibility = View.GONE
-                    itemAdapter.setList(it)
+                    val temp = it
+                    Checkmark.setOnClickListener {
+                        println("Just clicked")
+                        itemAdapter.setList(listLabel)
+                        hidePreview()
+                        Checkmark.visibility = View.GONE
+                        ClearButton.visibility = View.GONE
+                    }
+                    ClearButton.setOnClickListener {
+                        println("Just clicked")
+                        itemAdapter.setList(listLabel)
+                        hidePreview()
+                        Checkmark.visibility = View.GONE
+                        ClearButton.visibility = View.GONE
+                    }
                     sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED)
                 }
                 .addOnFailureListener {
@@ -60,9 +91,23 @@ class ImageLabelActivity : BaseCameraActivity() {
         //Use the detector to detect the labels inside the image
         detector.detectInImage(image)
                 .addOnSuccessListener {
-                    // Task completed successfully
+                    var temp = it.first()
                     progressBar.visibility = View.GONE
-                    itemAdapter.setList(it)
+                    Checkmark.setOnClickListener {
+                        listLabel.add(temp)
+                        println("Just clicked")
+                        itemAdapter.setList(listLabel)
+                        hidePreview()
+                        Checkmark.visibility = View.GONE
+                        ClearButton.visibility = View.GONE
+                    }
+                    ClearButton.setOnClickListener {
+                        println("Just clicked")
+                        itemAdapter.setList(listLabel)
+                        hidePreview()
+                        Checkmark.visibility = View.GONE
+                        ClearButton.visibility = View.GONE
+                    }
                     sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED)
                 }
                 .addOnFailureListener {
@@ -73,25 +118,17 @@ class ImageLabelActivity : BaseCameraActivity() {
     }
 
     override fun onClick(v: View?) {
-        if(v?.id == R.id.Checkmark){
-            println("CHECKMARK")
-        }else if(v?.id == R.id.xmark){
-            println("XMARK")
-        }
         progressBar.visibility = View.VISIBLE
-        checkmark.visibility = View.VISIBLE
-        checkmark.setOnClickListener(this)
-        xmark.visibility = View.VISIBLE
-        xmark.setOnClickListener(this)
-
+        Checkmark.visibility = View.VISIBLE
+        ClearButton.visibility = View.VISIBLE
         cameraView.captureImage { cameraKitImage ->
             // Get the Bitmap from the captured shot
-            runImageLabeling(cameraKitImage.bitmap)
+            runCloudImageLabeling(cameraKitImage.bitmap)
             runOnUiThread {
                 showPreview()
                 imagePreview.setImageBitmap(cameraKitImage.bitmap)
             }
+
         }
     }
-
 }
