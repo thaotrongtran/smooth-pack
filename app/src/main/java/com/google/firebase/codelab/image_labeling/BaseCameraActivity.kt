@@ -16,9 +16,9 @@ abstract class BaseCameraActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-       // btnRetry.setOnClickListener {
-        //    if (cameraView.visibility == View.VISIBLE) showPreview() else hidePreview()
-       // }
+//        btnRetry.setOnClickListener {
+//            if (cameraView.visibility == View.VISIBLE) showPreview() else hidePreview()
+//        }
         fab_take_photo.setOnClickListener(this)
         sheetBehavior.peekHeight = 224
         sheetBehavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
@@ -34,13 +34,13 @@ abstract class BaseCameraActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onPause() {
-        cameraView.stop()
+        cameraView.start()
         super.onPause()
     }
 
     protected fun showPreview() {
-        framePreview.visibility = View.GONE
-        cameraView.visibility = View.VISIBLE
+        framePreview.visibility = View.VISIBLE
+        cameraView.visibility = View.GONE
     }
 
     protected fun hidePreview() {

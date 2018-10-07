@@ -4,17 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/listpackeditems"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
-    </LinearLayout>
-
     <com.wonderkiln.camerakit.CameraView
         android:id="@+id/cameraView"
         android:layout_width="match_parent"
@@ -33,29 +22,35 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop" />
 
-        <ImageButton
-            android:id="@+id/btnRetry"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_gravity="center"
-            android:background="@null"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_refresh" />
+        <!--<ImageButton-->
+            <!--android:id="@+id/btnRetry"-->
+            <!--android:layout_width="120dp"-->
+            <!--android:layout_height="120dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:background="@null"-->
+            <!--android:scaleType="centerCrop"-->
+            <!--android:src="@drawable/ic_refresh" />-->
 
     </FrameLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/xmark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_margin="16dp"
-        android:src="@mipmap/ic_clear"
-        app:backgroundTint="#ff0004"
-        app:fabSize="normal"
-        app:layout_anchor="@id/layout_bottom_sheet"
-        app:layout_anchorGravity="start"
-        app:rippleColor="@color/colorAccent"/>
+
+
+
+
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/ClearButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_margin="16dp"
+            android:src="@mipmap/ic_clear"
+            app:backgroundTint="#ff0004"
+            app:fabSize="normal"
+            app:layout_anchor="@id/layout_bottom_sheet"
+            app:layout_anchorGravity="end"
+            app:rippleColor="@color/colorAccent"/>
 
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -93,16 +88,16 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/Checkmark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:layout_width="60dp"
+        android:layout_height="68dp"
         android:layout_margin="16dp"
         android:src="@mipmap/ic_check"
+        android:visibility="gone"
         app:backgroundTint="#33ff00"
         app:fabSize="normal"
         app:layout_anchor="@id/layout_bottom_sheet"
-        app:layout_anchorGravity="center_horizontal"
-        app:rippleColor="@color/colorAccent"/>
+        app:layout_anchorGravity="start"
+        app:rippleColor="@color/colorAccent" />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_take_photo"
         android:layout_width="wrap_content"
@@ -112,177 +107,33 @@
         app:backgroundTint="#0FF"
         app:fabSize="normal"
         app:layout_anchor="@id/layout_bottom_sheet"
-        app:layout_anchorGravity="end"
+        app:layout_anchorGravity="center_horizontal"
         app:rippleColor="@color/colorAccent" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context="com.example.android.exampleapp.MainActivity">
+        <TextView
+            android:id="@+id/Blank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#ffff" />
+        <TextView
+            android:id="@+id/CarryOn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Carry-On Weight: 0.0 lbs"
+            android:textColor="#ffff" />
+        <TextView
+            android:id="@+id/Checkin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Checked Weight: 0.0 lbs"
+            android:textColor="#ffff" />
 
+    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-    <!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--android:layout_width="match_parent"-->
-<!--android:layout_height="match_parent">-->
-
-<!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:orientation="vertical">-->
-
-    <!--<androidx.recyclerview.widget.RecyclerView-->
-        <!--android:id="@+id/listpackeditems"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent" />-->
-<!--</LinearLayout>-->
-
-<!--<com.wonderkiln.camerakit.CameraView-->
-    <!--android:id="@+id/cameraView"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:adjustViewBounds="true" />-->
-
-<!--<FrameLayout-->
-    <!--android:id="@+id/framePreview"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:visibility="gone">-->
-
-    <!--<ImageView-->
-        <!--android:id="@+id/imagePreview"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:scaleType="centerCrop" />-->
-
-    <!--<ImageButton-->
-        <!--android:id="@+id/btnRetry"-->
-        <!--android:layout_width="120dp"-->
-        <!--android:layout_height="120dp"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:background="@null"-->
-        <!--android:scaleType="centerCrop"-->
-        <!--android:src="@drawable/ic_refresh" />-->
-
-<!--</FrameLayout>-->
-
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
-
-    <!--<at.markushi.ui.CircleButton-->
-        <!--android:id="@+id/Checkmark"-->
-        <!--android:layout_width="95dp"-->
-        <!--android:layout_height="95dp"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_marginTop="139dp"-->
-        <!--android:layout_marginEnd="29dp"-->
-        <!--android:layout_marginRight="29dp"-->
-        <!--android:layout_marginBottom="277dp"-->
-        <!--android:src="@mipmap/ic_check"-->
-        <!--android:visibility="gone"-->
-        <!--app:cb_color="#99CC00"-->
-        <!--app:cb_pressedRingWidth="8dip" />-->
-
-<!--</RelativeLayout>-->
-
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
-
-    <!--<at.markushi.ui.CircleButton-->
-        <!--android:id="@+id/xmark"-->
-        <!--android:layout_width="95dp"-->
-        <!--android:layout_height="95dp"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_marginStart="27dp"-->
-        <!--android:layout_marginLeft="29dp"-->
-        <!--android:layout_marginTop="139dp"-->
-        <!--android:layout_marginBottom="277dp"-->
-        <!--android:src="@mipmap/ic_clear"-->
-        <!--android:visibility="gone"-->
-
-        <!--app:cb_color="#FF0000"-->
-        <!--app:cb_pressedRingWidth="8dip" />-->
-
-<!--</RelativeLayout>-->
-
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
-
-    <!--<at.markushi.ui.CircleButton-->
-        <!--android:visibility="gone"-->
-        <!--android:layout_width="95dp"-->
-        <!--android:layout_height="95dp"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_marginStart="147dp"-->
-        <!--android:layout_marginLeft="147dp"-->
-        <!--android:layout_marginTop="135dp"-->
-        <!--android:layout_marginEnd="142dp"-->
-        <!--android:layout_marginRight="142dp"-->
-        <!--android:layout_marginBottom="281dp"-->
-        <!--android:src="@mipmap/ic_camera"-->
-        <!--app:cb_color="#0FF"-->
-        <!--app:cb_pressedRingWidth="8dip" />-->
-
-<!--</RelativeLayout>-->
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--android:id="@+id/layout_bottom_sheet"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:background="#FAFAFA"-->
-    <!--android:orientation="vertical"-->
-    <!--app:layout_behavior="@string/bottom_sheet_behavior">-->
-
-    <!--<ProgressBar-->
-        <!--android:id="@+id/progressBar"-->
-        <!--style="?android:attr/progressBarStyleHorizontal"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:indeterminate="true"-->
-        <!--android:visibility="gone" />-->
-
-    <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:padding="16dp"-->
-        <!--android:text="Detected items"-->
-        <!--android:textSize="24sp" />-->
-
-    <!--<androidx.recyclerview.widget.RecyclerView-->
-        <!--android:id="@+id/rvLabel"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:paddingLeft="8dp"-->
-        <!--android:paddingRight="8dp" />-->
-
-<!--</LinearLayout>-->
-
-
-<!--<com.google.android.material.floatingactionbutton.FloatingActionButton-->
-    <!--android:id="@+id/fab_take_photo"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_margin="16dp"-->
-    <!--android:src="@mipmap/ic_camera"-->
-    <!--app:fabSize="normal"-->
-    <!--app:layout_anchor="@id/layout_bottom_sheet"-->
-    <!--app:layout_anchorGravity="end"-->
-    <!--app:backgroundTint="#0FF"-->
-    <!--/>-->
-
-<!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->

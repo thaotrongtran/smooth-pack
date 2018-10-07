@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "37748536014",
-    "firebase_url": "https://testfirtcamera.firebaseio.com",
-    "project_id": "testfirtcamera",
-    "storage_bucket": "testfirtcamera.appspot.com"
+    "project_number": "525013288197",
+    "firebase_url": "https://final-7ed07.firebaseio.com",
+    "project_id": "final-7ed07",
+    "storage_bucket": "final-7ed07.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:37748536014:android:d7e81c0007793e34",
+        "mobilesdk_app_id": "1:525013288197:android:d7e81c0007793e34",
         "android_client_info": {
           "package_name": "com.google.firebase.codelab.image_labeling"
         }
       },
       "oauth_client": [
         {
-          "client_id": "37748536014-q29aqpo4h1buotlkelqpetu5jan7s1s5.apps.googleusercontent.com",
+          "client_id": "525013288197-8ff6tk65isnfcrkr7jae6aamlogict47.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBRgaBThIj7moqNsfF8JK87XYEJRO4Y9gI"
+          "current_key": "AIzaSyBAvIM1ow5vaTQN3KEHo3WjrBpnW4BwWm8"
         }
       ],
       "services": {

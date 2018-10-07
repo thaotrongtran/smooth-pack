@@ -11,6 +11,7 @@ import com.google.firebase.ml.vision.label.FirebaseVisionLabel
 import kotlinx.android.synthetic.main.item_row.view.*
 
 class ImageLabelAdapter(private var firebaseVisionList: List<Any>) : RecyclerView.Adapter<ImageLabelAdapter.ItemHolder>() {
+    val c = ImageLabelActivity::class
     lateinit var context: Context
 
     inner class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -18,18 +19,32 @@ class ImageLabelAdapter(private var firebaseVisionList: List<Any>) : RecyclerVie
         fun bindCloud(currentItem: FirebaseVisionCloudLabel) {
             itemView.itemName.text = currentItem.label
             itemView.itemAccuracy.text = "Probability : ${(currentItem.confidence * 100).toInt()}%"
+            itemView.toggleButton.toggleButton
         }
 
         fun bindDevice(currentItem: FirebaseVisionLabel) {
             itemView.itemName.text = currentItem.label
             itemView.itemAccuracy.text = "Probability : ${(currentItem.confidence * 100).toInt()}%"
+            itemView.toggleButton.toggleButton.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    // The toggle is enabled
+                    //ImageLabelActivity.carryOn += 5
+                    println("TOOGLE")
+                    println(currentItem.label)
+                    
+                } else {
+                    // The toggle is disabled
+                }
+            }
         }
 
     }
 
     fun setList(visionList: List<Any>) {
-        firebaseVisionList = visionList
-        notifyDataSetChanged()
+
+            firebaseVisionList = visionList
+            notifyDataSetChanged()
+
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {

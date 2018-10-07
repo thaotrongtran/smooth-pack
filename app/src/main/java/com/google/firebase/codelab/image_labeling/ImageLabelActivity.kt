@@ -4,28 +4,43 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import android.widget.ToggleButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.ImageView
+import com.google.firebase.ml.vision.label.FirebaseVisionLabel
 
 
 class ImageLabelActivity : BaseCameraActivity() {
-    lateinit var checkmark: ImageView
-    lateinit var xmark : ImageView
+    lateinit var Checkmark: ImageView
+    lateinit var ClearButton: ImageView
+    //lateinit var xMark : ImageView
     private val itemAdapter: ImageLabelAdapter by lazy {
         ImageLabelAdapter(listOf())
     }
+
+    val listLabel: MutableList<FirebaseVisionLabel> = ArrayList();
+
+    val carryOn = 0
+    val checked = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         rvLabel.layoutManager = LinearLayoutManager(this)
         rvLabel.adapter = itemAdapter
 
-        checkmark = findViewById(R.id.Checkmark)
-        xmark = findViewById(R.id.xmark)
+        Checkmark = findViewById(R.id.Checkmark)
+        ClearButton = findViewById(R.id.ClearButton)
+
+
+
+
+
+      //  xMark = findViewById(R.id.xMark)
     }
 
     private fun runImageLabeling(bitmap: Bitmap) {
@@ -40,7 +55,23 @@ class ImageLabelActivity : BaseCameraActivity() {
                 .addOnSuccessListener {
                     // Task completed successfully
                     progressBar.visibility = View.GONE
-                    itemAdapter.setList(it)
+                    val temp = it
+                    Checkmark.setOnClickListener{
+                       listLabel.add(temp.first())
+                        println("Just clicked")
+                        itemAdapter.setList(listLabel)
+                        hidePreview()
+                        Checkmark.visibility = View.GONE
+                        ClearButton.visibility = View.GONE
+                    }
+                    ClearButton.setOnClickListener{
+//                        listLabel.add(temp.first())
+                        println("Just clicked")
+                        itemAdapter.setList(listLabel)
+                        hidePreview()
+                        Checkmark.visibility = View.GONE
+                        ClearButton.visibility = View.GONE
+                    }
                     sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED)
                 }
                 .addOnFailureListener {
@@ -73,17 +104,16 @@ class ImageLabelActivity : BaseCameraActivity() {
     }
 
     override fun onClick(v: View?) {
-        if(v?.id == R.id.Checkmark){
-            println("CHECKMARK")
-        }else if(v?.id == R.id.xmark){
-            println("XMARK")
-        }
-        progressBar.visibility = View.VISIBLE
-        checkmark.visibility = View.VISIBLE
-        checkmark.setOnClickListener(this)
-        xmark.visibility = View.VISIBLE
-        xmark.setOnClickListener(this)
 
+//                if(v?.id == R.id.Checkmark){
+//            println("CHECKMARK")
+//        }else if(v?.id == R.id.ClearButton){
+//            println("XMARK")
+//        }
+        progressBar.visibility = View.VISIBLE
+        Checkmark.visibility = View.VISIBLE
+        ClearButton.visibility = View.VISIBLE
+        //xMark.visibility = View.VISIBLE
         cameraView.captureImage { cameraKitImage ->
             // Get the Bitmap from the captured shot
             runImageLabeling(cameraKitImage.bitmap)
@@ -91,6 +121,7 @@ class ImageLabelActivity : BaseCameraActivity() {
                 showPreview()
                 imagePreview.setImageBitmap(cameraKitImage.bitmap)
             }
+
         }
     }
 
