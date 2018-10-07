@@ -8,18 +8,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:foreground="?attr/selectableItemBackground"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Switch
+            android:id="@+id/switch5"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
 
         <TextView
             android:id="@+id/itemName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="8dp"
-            android:paddingRight="8dp"
             android:paddingTop="8dp"
+            android:paddingRight="8dp"
             android:textSize="20sp"
             tools:text="Item #1" />
 
@@ -31,13 +35,7 @@
             android:paddingRight="8dp"
             android:paddingBottom="8dp"
             android:textSize="16sp" />
-
-        <ToggleButton
-            android:id="@+id/toggleButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ToggleButton" />
-
     </LinearLayout>
-    
+
+
 </androidx.cardview.widget.CardView>

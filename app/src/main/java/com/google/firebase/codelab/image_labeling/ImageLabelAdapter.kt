@@ -9,31 +9,52 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.ml.vision.cloud.label.FirebaseVisionCloudLabel
 import com.google.firebase.ml.vision.label.FirebaseVisionLabel
 import kotlinx.android.synthetic.main.item_row.view.*
+import com.google.firebase.codelab.image_labeling.ImageLabelActivity
 
 class ImageLabelAdapter(private var firebaseVisionList: List<Any>) : RecyclerView.Adapter<ImageLabelAdapter.ItemHolder>() {
     val c = ImageLabelActivity::class
     lateinit var context: Context
+    val temp = ImageLabelActivity();
 
     inner class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+
         fun bindCloud(currentItem: FirebaseVisionCloudLabel) {
             itemView.itemName.text = currentItem.label
-            itemView.itemAccuracy.text = "Probability : ${(currentItem.confidence * 100).toInt()}%"
-            itemView.toggleButton.toggleButton
-        }
-
-        fun bindDevice(currentItem: FirebaseVisionLabel) {
-            itemView.itemName.text = currentItem.label
-            itemView.itemAccuracy.text = "Probability : ${(currentItem.confidence * 100).toInt()}%"
-            itemView.toggleButton.toggleButton.setOnCheckedChangeListener { _, isChecked ->
+            //itemView.itemAccuracy.text = "Probability : ${(currentItem.confidence * 100).toInt()}%"
+            itemView.switch5.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     // The toggle is enabled
                     //ImageLabelActivity.carryOn += 5
                     println("TOOGLE")
                     println(currentItem.label)
-                    
+
+                    temp.carryOn += 10;
+                    println(temp.carryOn)
                 } else {
                     // The toggle is disabled
+                    temp.carryOn -= 10;
+                    println(temp.carryOn)
+                }
+            }
+        }
+
+        fun bindDevice(currentItem: FirebaseVisionLabel) {
+            itemView.itemName.text = currentItem.label
+            //itemView.itemAccuracy.text = "Probability : ${(currentItem.confidence * 100).toInt()}%"
+            itemView.switch5.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    // The toggle is enabled
+                    //ImageLabelActivity.carryOn += 5
+                    println("TOOGLE")
+                    println(currentItem.label)
+
+                    temp.carryOn += 10;
+                    println(temp.carryOn)
+                } else {
+                    // The toggle is disabled
+                    temp.carryOn -= 10;
+                    println(temp.carryOn)
                 }
             }
         }

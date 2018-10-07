@@ -109,6 +109,7 @@
         app:layout_anchor="@id/layout_bottom_sheet"
         app:layout_anchorGravity="center_horizontal"
         app:rippleColor="@color/colorAccent" />
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -116,22 +117,27 @@
         android:orientation="vertical"
         android:padding="16dp"
         tools:context="com.example.android.exampleapp.MainActivity">
+
         <TextView
             android:id="@+id/Blank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="#ffff" />
+
         <TextView
             android:id="@+id/CarryOn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/blue"
             android:text="Carry-On Weight: 0.0 lbs"
             android:textColor="#ffff" />
+
         <TextView
             android:id="@+id/Checkin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/blue"
             android:text="Checked Weight: 0.0 lbs"
             android:textColor="#ffff" />
 

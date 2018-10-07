@@ -1,10 +1,10 @@
 package com.google.firebase.codelab.image_labeling
 
+import com.google.firebase.database.*
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import android.widget.ToggleButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.ml.vision.FirebaseVision
@@ -12,6 +12,7 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.ImageView
 import com.google.firebase.ml.vision.label.FirebaseVisionLabel
+import com.google.firebase.ml.vision.cloud.label.FirebaseVisionCloudLabel
 
 
 class ImageLabelActivity : BaseCameraActivity() {
@@ -22,11 +23,13 @@ class ImageLabelActivity : BaseCameraActivity() {
         ImageLabelAdapter(listOf())
     }
 
-    val listLabel: MutableList<FirebaseVisionLabel> = ArrayList();
+    val listLabel: MutableList<FirebaseVisionCloudLabel> = ArrayList();
+    var carryOn = 0
+    var checked = 0
 
-    val carryOn = 0
-    val checked = 0
-
+//    fun increaseCarryOn(double: Double){
+//        carryOn += double
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,10 +40,7 @@ class ImageLabelActivity : BaseCameraActivity() {
         ClearButton = findViewById(R.id.ClearButton)
 
 
-
-
-
-      //  xMark = findViewById(R.id.xMark)
+        //  xMark = findViewById(R.id.xMark)
     }
 
     private fun runImageLabeling(bitmap: Bitmap) {
@@ -57,7 +57,7 @@ class ImageLabelActivity : BaseCameraActivity() {
                     progressBar.visibility = View.GONE
                     val temp = it
                     Checkmark.setOnClickListener{
-                       listLabel.add(temp.first())
+                      // listLabel.add(temp.first())
                         println("Just clicked")
                         itemAdapter.setList(listLabel)
                         hidePreview()
@@ -91,9 +91,24 @@ class ImageLabelActivity : BaseCameraActivity() {
         //Use the detector to detect the labels inside the image
         detector.detectInImage(image)
                 .addOnSuccessListener {
-                    // Task completed successfully
+                    var temp = it.first()
                     progressBar.visibility = View.GONE
-                    itemAdapter.setList(it)
+                    Checkmark.setOnClickListener{
+                        listLabel.add(temp)
+                        println("Just clicked")
+                        itemAdapter.setList(listLabel)
+                        hidePreview()
+                        Checkmark.visibility = View.GONE
+                        ClearButton.visibility = View.GONE
+                    }
+                    ClearButton.setOnClickListener{
+                        //                        listLabel.add(temp.first())
+                        println("Just clicked")
+                        itemAdapter.setList(listLabel)
+                        hidePreview()
+                        Checkmark.visibility = View.GONE
+                        ClearButton.visibility = View.GONE
+                    }
                     sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED)
                 }
                 .addOnFailureListener {
@@ -116,7 +131,7 @@ class ImageLabelActivity : BaseCameraActivity() {
         //xMark.visibility = View.VISIBLE
         cameraView.captureImage { cameraKitImage ->
             // Get the Bitmap from the captured shot
-            runImageLabeling(cameraKitImage.bitmap)
+            runCloudImageLabeling(cameraKitImage.bitmap)
             runOnUiThread {
                 showPreview()
                 imagePreview.setImageBitmap(cameraKitImage.bitmap)
@@ -124,5 +139,7 @@ class ImageLabelActivity : BaseCameraActivity() {
 
         }
     }
+
+
 
 }

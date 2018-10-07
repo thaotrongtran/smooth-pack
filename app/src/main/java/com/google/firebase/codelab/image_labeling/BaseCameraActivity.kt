@@ -47,4 +47,5 @@ abstract class BaseCameraActivity : AppCompatActivity(), View.OnClickListener {
         framePreview.visibility = View.GONE
         cameraView.visibility = View.VISIBLE
     }
+
 }
